@@ -147,7 +147,9 @@ function promos (location, interests, excluded) {
                 reject(error)
             } else {
                 let promos = results.map(function (result) {
-                    return result.obj.promotion;
+                    let promotion = result.obj.promotion;
+                    promotion ["distance"] = result.dis
+                    return promotion
                 })
                 resolve(promos)
             }

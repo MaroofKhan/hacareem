@@ -9,17 +9,12 @@ const Promo = require('./models/Promotion').Handlers
 
 function socket (io) {
     io.on('connection', function (client) {
-        console.log('CLIENT CONNECTED!')
-        client.emit('salute', {
-            ajskns: "lsadmlksmd"
-        })
         client.sent = []
         client.on('location', function (location) {
             console.log(location)
             Promo.promos(location, ['FOOD', 'LIFESTYLE', 'ENTERTAINMENT', 'BEAUTY'], client.sent).then(function (promos) {
                 promos.map(function (promo) {
                     client.sent.push(promo.id)
-                    console.log(promo)
                     client.emit('promo', promo)
                 })
             })
