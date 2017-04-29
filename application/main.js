@@ -22,7 +22,7 @@ const server = require('http').createServer(application);
 
 const Mongoose = require('mongoose')
 Mongoose.set('debug', true)
-Mongoose.connect('mongodb://localhost:3001/direem')
+Mongoose.connect('mongodb://direem:password@ds017165.mlab.com:17165/book-of-vouchers')
 
 Mongoose.connection.on('connected', function () {
     console.log('MongoDB connected!')
