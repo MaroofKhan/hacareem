@@ -14,6 +14,7 @@ function socket (io) {
             Promo.promos(location, ['FOOD', 'LIFESTYLE', 'ENTERTAINMENT', 'BEAUTY'], client.sent).then(function (promos) {
                 promos.map(function (promo) {
                     client.sent.push(promo.id)
+                    console.log(promo)
                     client.emit('promo', promo)
                 })
             })
