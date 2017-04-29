@@ -10,6 +10,7 @@ const Promo = require('./models/Promotion').Handlers
 function socket (io) {
     io.on('connection', function (client) {
         console.log('CLIENT CONNECTED!')
+        client.emit('salute', 'Hi!')
         client.sent = []
         client.on('location', function (location) {
             console.log(location)
